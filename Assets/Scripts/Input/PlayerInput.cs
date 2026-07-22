@@ -3,10 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    // Update is called once per frame
+    ChessSquare selectedSquare;
+
     void Update()
     {
-        // Vérifier si le bouton gauche de la souris a été pressé
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             // Récupérer la position de la souris
@@ -22,6 +22,8 @@ public class PlayerInput : MonoBehaviour
 
                 if (chessSquare != null)
                 {
+                    SelectSquare(chessSquare);
+
                     Vector2Int boardPosition = chessSquare.GetBoardPosition();
 
                     // Convertir la position du plateau en notation d'échecs
@@ -31,6 +33,17 @@ public class PlayerInput : MonoBehaviour
                     Debug.Log($"Chess notation: {letter}{number}");
                 }
             }
+        }
+    }
+
+    // Méthode pour sélectionner une case d'échecs
+    private void SelectSquare(ChessSquare newSquare)
+    {
+        selectedSquare = newSquare;
+
+        if (selectedSquare != null)
+        {
+            Debug.Log($"Square selected: {selectedSquare.GetBoardPosition()}");
         }
     }
 }
