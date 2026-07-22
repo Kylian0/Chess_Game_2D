@@ -23,12 +23,17 @@ public class ChessBoard : MonoBehaviour
                 float positionX = i - 3.5f;
                 float positionY = j - 3.5f;
 
+                // Instancier la case à la position calculée
                 GameObject caseInstance = Instantiate(casePrefab, new Vector3(positionX, positionY, 0), Quaternion.identity, parent: transform);
-                
+
+                // Récupérer le composant ChessSquare de la case instanciée
+                ChessSquare chessSquare = caseInstance.GetComponent<ChessSquare>();
+                // Définir la position de la case sur le plateau
+                chessSquare.SetBoardPosition(new Vector2Int(i, j));
 
                 SpriteRenderer spriteRenderer = caseInstance.GetComponent<SpriteRenderer>();
-                
 
+                // Colorer les cases en noir et blanc
                 if ((i + j) % 2 == 0)
                 {
                     spriteRenderer.color = Color.black;
