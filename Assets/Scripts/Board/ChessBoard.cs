@@ -5,12 +5,16 @@ public class ChessBoard : MonoBehaviour
 {
     public GameObject casePrefab;
     public TMP_Text textPrefab;
+    
+    [SerializeField]
+    private GameObject whitePawn;
 
     char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
     void Start()
     {
         CreateChessBoard();
         CreateChessBoardLabel();
+        SpawnWhitePawn();
     }
 
     public void CreateChessBoard()
@@ -67,5 +71,26 @@ public class ChessBoard : MonoBehaviour
 
             numberLabel.text = (i + 1).ToString();
         }
+    }
+
+    public void SpawnWhitePawn() 
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            // Faire apparaitre les pions blanc sur toutes la rangée 2
+            Vector2Int boardPosition = new Vector2Int(i, 1);
+            Vector3 worldPosition = BoardPositionToWorldPosition(boardPosition);
+            Instantiate(whitePawn, worldPosition, Quaternion.identity, parent: transform);
+        }
+    }
+
+    // Méthode pour faire apparaître les pièces sur le plateau
+    public Vector3 BoardPositionToWorldPosition(Vector2Int boardPosition)
+    {
+        float positionX = boardPosition.x - 3.5f;
+        float positionY = boardPosition.y - 3.5f;
+
+        Vector3 worldPosition = new Vector3(positionX, positionY, 0);
+        return worldPosition;
     }
 }

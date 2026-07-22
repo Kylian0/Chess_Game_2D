@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChessBoard
   casePrefab: {fileID: 4661152349076872320, guid: f29c0a449d6de074a91b7f35401e1705, type: 3}
   textPrefab: {fileID: 1022439630902047645, guid: afba7cc5e980dbd46b9473c855d02f47, type: 3}
+  whitePawn: {fileID: 2158448497119641842, guid: 321b4fe963d0aae4e99cc1a8e7ee5b56, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
