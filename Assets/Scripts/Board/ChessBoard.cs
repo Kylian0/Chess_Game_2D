@@ -37,10 +37,12 @@ public class ChessBoard : MonoBehaviour
                 if ((i + j) % 2 == 0)
                 {
                     spriteRenderer.color = Color.black;
+                    chessSquare.SetOriginalColor(spriteRenderer.color);
                 }
                 else
                 {
                     spriteRenderer.color = Color.white;
+                    chessSquare.SetOriginalColor(spriteRenderer.color);
                 }
             }
         }

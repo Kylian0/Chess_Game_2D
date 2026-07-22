@@ -39,10 +39,20 @@ public class PlayerInput : MonoBehaviour
     // Méthode pour sélectionner une case d'échecs
     private void SelectSquare(ChessSquare newSquare)
     {
+        // Réinitialiser la couleur de la case précédemment sélectionnée si elle existe
+        if (selectedSquare != null && selectedSquare != newSquare)
+        {
+            selectedSquare.ResetHighlight();
+        }
+
         selectedSquare = newSquare;
 
+        // Mettre en surbrillance la nouvelle case sélectionnée
         if (selectedSquare != null)
         {
+
+            selectedSquare.Highlight();
+
             Debug.Log($"Square selected: {selectedSquare.GetBoardPosition()}");
         }
     }
