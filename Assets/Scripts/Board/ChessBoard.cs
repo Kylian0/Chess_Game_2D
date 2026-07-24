@@ -8,13 +8,16 @@ public class ChessBoard : MonoBehaviour
     
     [SerializeField]
     private GameObject whitePawn;
+    [SerializeField]
+    private GameObject blackPawn;
 
     char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
     void Start()
     {
         CreateChessBoard();
         CreateChessBoardLabel();
-        SpawnWhitePawn();
+        SpawnPawnRow(whitePawn, 1);
+        SpawnPawnRow(blackPawn, 6);
     }
 
     public void CreateChessBoard()
@@ -73,14 +76,25 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
-    public void SpawnWhitePawn() 
+    public void SpawnPawnRow(GameObject pawnPrefab, int row) 
     {
         for (int i = 0; i < 8; i++)
         {
-            // Faire apparaitre les pions blanc sur toutes la rangée 2
-            Vector2Int boardPosition = new Vector2Int(i, 1);
+            // Définir la position de la pièce sur le plateau
+            Vector2Int boardPosition = new Vector2Int(i, row);
+            // Convertir la position du plateau en position dans le monde
             Vector3 worldPosition = BoardPositionToWorldPosition(boardPosition);
-            Instantiate(whitePawn, worldPosition, Quaternion.identity, parent: transform);
+            // Instancier le pion blanc à la position calculée
+            GameObject pawnInstance = Instantiate(pawnPrefab, worldPosition, Quaternion.identity, parent: transform);
+            // Récupérer le composant ChessPiece du pion instancié
+            ChessPiece chessPiece = pawnInstance.GetComponent<ChessPiece>();
+
+
+            if (chessPiece != null)
+            {
+                // Définir la position de la pièce sur le plateau
+                chessPiece.SetPiecePosition(boardPosition);
+            }
         }
     }
 

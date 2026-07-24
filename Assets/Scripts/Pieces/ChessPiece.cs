@@ -12,9 +12,6 @@ public class ChessPiece : MonoBehaviour
         King
     }
 
-    [SerializeField]
-    private PieceType pieceType;
-
     public enum PieceColor
     {
         White,
@@ -22,15 +19,28 @@ public class ChessPiece : MonoBehaviour
     }
 
     [SerializeField]
-    private PieceColor pieceColor;
-
+    private PieceType pieceType;
     public void SetPieceType(PieceType type)
     {
         pieceType = type;
     }
 
+    [SerializeField]
+    private PieceColor pieceColor;
     public void SetPieceColor(PieceColor color)
     {
         pieceColor = color;
+    }
+
+    [SerializeField]
+    private Vector2Int piecePosition;
+    public void SetPiecePosition(Vector2Int position)
+    {
+        piecePosition = position;
+    }
+
+    public Vector2Int GetPiecePosition()
+    {
+        return piecePosition;
     }
 }
