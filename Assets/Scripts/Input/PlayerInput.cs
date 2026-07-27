@@ -35,6 +35,17 @@ public class PlayerInput : MonoBehaviour
 
                     Vector2Int boardPosition = chessSquare.GetBoardPosition();
 
+                    // Afficher la position de la case sélectionnée et la pièce sélectionnée (le cas échéant)
+                    if (selectedPiece != null)
+                    {
+                        Vector2Int startPosition = selectedPiece.GetPiecePosition();
+                        Vector2Int targetPosition = boardPosition;
+
+                        Debug.Log(
+                            $"Move attempt: {selectedPiece.GetPieceType()} from {startPosition} to {targetPosition}"
+                        );
+                    }
+
                     // Convertir la position du plateau en notation d'échecs
                     char letter = (char)('A' + boardPosition.x);
                     int number = boardPosition.y + 1;

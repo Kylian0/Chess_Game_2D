@@ -6,27 +6,12 @@ public class ChessBoard : MonoBehaviour
     public GameObject casePrefab;
     public TMP_Text textPrefab;
     
-    [SerializeField]
-    private GameObject whitePawn;
-    [SerializeField]
-    private GameObject blackPawn;
-
-
     char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
-
-    [SerializeField]
-    private GameObject[] whiteBackRow;
-    [SerializeField]
-    private GameObject[] blackBackRow;
 
     void Start()
     {
         CreateChessBoard();
         CreateChessBoardLabel();
-        SpawnPawnRow(whitePawn, 1);
-        SpawnPawnRow(blackPawn, 6);
-        SpawnBackRow(whiteBackRow, 0);
-        SpawnBackRow(blackBackRow, 7);
     }
 
     public void CreateChessBoard()
@@ -98,27 +83,6 @@ public class ChessBoard : MonoBehaviour
             // Récupérer le composant ChessPiece du pion instancié
             ChessPiece chessPiece = pawnInstance.GetComponent<ChessPiece>();
 
-
-            if (chessPiece != null)
-            {
-                // Définir la position de la pièce sur le plateau
-                chessPiece.SetPiecePosition(boardPosition);
-            }
-        }
-    }
-
-    public void SpawnBackRow(GameObject[] piecePrefab, int row)
-    {
-        for(int i = 0; i < piecePrefab.Length; i++)
-        {
-            // Définir la position de la pièce sur le plateau
-            Vector2Int boardPosition = new Vector2Int(i, row);
-            // Convertir la position du plateau en position dans le monde
-            Vector3 worldPosition = BoardPositionToWorldPosition(boardPosition);
-            // Instancier les pièces à la position calculée
-            GameObject pieceInstance = Instantiate(piecePrefab[i], worldPosition, Quaternion.identity, parent: transform);
-            // Récupérer le composant ChessPiece de la pièce isntaniée
-            ChessPiece chessPiece = pieceInstance.GetComponent<ChessPiece>();
 
             if (chessPiece != null)
             {

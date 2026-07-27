@@ -474,6 +474,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &920014489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920014490}
+  - component: {fileID: 920014491}
+  m_Layer: 0
+  m_Name: PieceSetup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920014490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920014489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &920014491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920014489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7dfd32f739fb54683884d4ebd59927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PieceSetup
+  chessBoard: {fileID: 6826554}
+  whitePawn: {fileID: 2158448497119641842, guid: 321b4fe963d0aae4e99cc1a8e7ee5b56, type: 3}
+  blackPawn: {fileID: 3495341808265253601, guid: eec2dd93f3dd26a48a0446f9ff917fea, type: 3}
+  whiteBackRow:
+  - {fileID: 82947997425560435, guid: 030f48cd4fcfd894bb1595a114e5c6d7, type: 3}
+  - {fileID: 7763828236819942814, guid: b758a3dfa6cc4b44e90e5395bd823f7d, type: 3}
+  - {fileID: 139157974566384531, guid: 4451e4b82d1412547a565558b759bf46, type: 3}
+  - {fileID: 4450822358437297721, guid: 01a66746483f87145972459ec77f01cf, type: 3}
+  - {fileID: 7397019129973290265, guid: 3163a2491b33d9347aec09d1bee349ac, type: 3}
+  - {fileID: 139157974566384531, guid: 4451e4b82d1412547a565558b759bf46, type: 3}
+  - {fileID: 7763828236819942814, guid: b758a3dfa6cc4b44e90e5395bd823f7d, type: 3}
+  - {fileID: 82947997425560435, guid: 030f48cd4fcfd894bb1595a114e5c6d7, type: 3}
+  blackBackRow:
+  - {fileID: 145697896415914889, guid: 107ad9882bbaa3e428669f053a0f8c53, type: 3}
+  - {fileID: 4978698067266032034, guid: 8632617248d60a6489ef7556e6684250, type: 3}
+  - {fileID: 3866623279307198551, guid: b94a9be3dedf1ca4dabbc81e3c9b36d6, type: 3}
+  - {fileID: 5671888647747576867, guid: d63d7df1fbf94454895c5e75a2337b83, type: 3}
+  - {fileID: 1084861005701716432, guid: 102a9b87e42a6c543bc6667f0e7e1798, type: 3}
+  - {fileID: 3866623279307198551, guid: b94a9be3dedf1ca4dabbc81e3c9b36d6, type: 3}
+  - {fileID: 4978698067266032034, guid: 8632617248d60a6489ef7556e6684250, type: 3}
+  - {fileID: 145697896415914889, guid: 107ad9882bbaa3e428669f053a0f8c53, type: 3}
 --- !u!1 &1229461190
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,3 +671,4 @@ SceneRoots:
   - {fileID: 6826553}
   - {fileID: 1229461193}
   - {fileID: 1304810327}
+  - {fileID: 920014490}
