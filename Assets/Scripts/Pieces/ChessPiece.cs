@@ -25,6 +25,11 @@ public class ChessPiece : MonoBehaviour
         pieceType = type;
     }
 
+    public PieceType GetPieceType()
+    {
+        return pieceType;
+    }
+
     [SerializeField]
     private PieceColor pieceColor;
     public void SetPieceColor(PieceColor color)

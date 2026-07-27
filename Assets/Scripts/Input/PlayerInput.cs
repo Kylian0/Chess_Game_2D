@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     ChessSquare selectedSquare;
+    ChessPiece selectedPiece;
 
     void Update()
     {
@@ -14,12 +15,20 @@ public class PlayerInput : MonoBehaviour
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
             // Vérifier si un collider est présent à la position de la souris
-            Collider2D hitCollider = Physics2D.OverlapPoint(worldPosition);
+            Collider2D[] hitCollider = Physics2D.OverlapPointAll(worldPosition);
 
-            if (hitCollider != null)
+            foreach (Collider2D hit in hitCollider)
             {
-                ChessSquare chessSquare = hitCollider.GetComponent<ChessSquare>();
+                ChessPiece chessPiece = hit.GetComponent<ChessPiece>();
 
+                if (chessPiece != null)
+                {
+                    SelectPiece(chessPiece);
+                }
+
+                ChessSquare chessSquare = hit.GetComponent<ChessSquare>();
+
+                // Si une case d'échecs est trouvée, la sélectionner et afficher sa notation d'échecs
                 if (chessSquare != null)
                 {
                     SelectSquare(chessSquare);
@@ -28,7 +37,7 @@ public class PlayerInput : MonoBehaviour
 
                     // Convertir la position du plateau en notation d'échecs
                     char letter = (char)('A' + boardPosition.x);
-                    int number = boardPosition.y + 1; 
+                    int number = boardPosition.y + 1;
 
                     Debug.Log($"Chess notation: {letter}{number}");
                 }
@@ -52,8 +61,13 @@ public class PlayerInput : MonoBehaviour
         {
 
             selectedSquare.Highlight();
-
-            Debug.Log($"Square selected: {selectedSquare.GetBoardPosition()}");
         }
+    }
+
+    private void SelectPiece(ChessPiece newPiece)
+    {
+        selectedPiece = newPiece;
+
+        Debug.Log($"Selected piece: {selectedPiece.GetPieceType()} at {selectedPiece.GetPiecePosition()}");
     }
 }
